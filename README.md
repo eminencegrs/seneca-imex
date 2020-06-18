@@ -1,5 +1,5 @@
 # Seneca.EnvironmentVariables.ExIm
-[![Build Status](https://eminencegrs.visualstudio.com/ExIm/_apis/build/status/Seneca.EnvironmentVariables.ExIm?branchName=master)](https://eminencegrs.visualstudio.com/ExIm/_build/latest?definitionId=8&branchName=master)
+[![Build Status](https://dev.azure.com/eminencegrs/ExIm/_apis/build/status/Seneca.EnvironmentVariables.ExIm?branchName=develop)](https://dev.azure.com/eminencegrs/ExIm/_build/latest?definitionId=8&branchName=develop)
 
 ## Introduction
 
