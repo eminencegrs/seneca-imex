@@ -1,0 +1,49 @@
+trigger:
+- master
+- develop
+- feature/*
+- release/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  displayName: Restore
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: 'build'
+    projects: 'src/**/*.fsproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+# - task: DotNetCoreCLI@2
+#   displayName: Test
+#   inputs:
+#     command: 'test'
+#     arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+#     projects: 'test/**/*.csproj'
+#     nobuild: true
+
+# - script: dotnet tool install -g dotnet-reportgenerator-globaltool
+#   displayName: Install Code Coverage Generator
+
+# - script: reportgenerator "-reports:$(Build.SourcesDirectory)/test/**/coverage.opencover.xml" "-targetdir:$(Build.SourcesDirectory)/coverage" "-reporttypes:Cobertura"
+#   displayName: Create Code Coverage Report
+
+# - task: PublishCodeCoverageResults@1
+#   displayName: 'Publish Code Coverage'
+#   inputs:
+#     codeCoverageTool: Cobertura
+#     summaryFileLocation: '$(Build.SourcesDirectory)/coverage/Cobertura.xml'
+#     reportDirectory: '$(Build.SourcesDirectory)/coverage'
