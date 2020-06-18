@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Import": {
+      "commandName": "Project",
+      "commandLineArgs": "--task=import --filename=import.json --target=user"
+    },
+    "Export": {
+      "commandName": "Project",
+      "commandLineArgs": "--task=export --filename=export.json --target=user"
+    }
+  }
+}
