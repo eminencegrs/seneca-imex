@@ -23,4 +23,3 @@ let handle (operation : OperationName) (fileName : string) (target : Environment
     match operation with
     | OperationName.Export -> export fileName target
     | OperationName.Import -> import fileName target
-    | _ -> invalidOp "Could not recognize the operation."
