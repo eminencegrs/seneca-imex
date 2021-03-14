@@ -8,24 +8,29 @@ let main argv =
 
     let logger = getLogger()
 
-    logger.LogInformation "Started processing arguments..."
+    try
 
-    let fileName = getFileName argv
+        logger.LogInformation "Started processing arguments..."
 
-    logger.LogInformation("The file name: {fileName}", fileName)
+        let fileName = getFileName argv
 
-    let operation = getOperation argv
+        logger.LogInformation("The file name: {fileName}", fileName)
 
-    logger.LogInformation("The operation: {operation}", operation)
+        let operation = getOperation argv
 
-    let target = getTarget argv
+        logger.LogInformation("The operation: {operation}", operation)
 
-    logger.LogInformation("Target: {target}", target)
+        let target = getTarget argv
 
-    logger.LogInformation("Processing environment variables...")
+        logger.LogInformation("Target: {target}", target)
 
-    handle operation fileName target
+        logger.LogInformation("Processing environment variables...")
 
-    logger.LogInformation("Environment variables have been processed.")
+        handle operation fileName target
+
+        logger.LogInformation("Environment variables have been processed.")
+
+    with
+        | ex -> logger.LogError(ex.Message)
 
     0
