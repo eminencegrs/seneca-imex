@@ -1,28 +1,31 @@
-﻿open System
-open System.Linq
-open Arguments
-open Performer
+﻿open Microsoft.Extensions.Logging
+open ArgumentsProcessing
+open Logging
+open Handler
 
 [<EntryPoint>]
 let main argv =
-    let fileName =
-        match (getFileName argv).SingleOrDefault() with
-        | x when x <> null -> x
-        | x when x = null -> invalidArg "filename" "Could not recognize filename."
-        | _ -> invalidArg "arguments" "Could not recognize filename."
 
-    let operation =
-        match (getOperation argv).SingleOrDefault() with
-        | x when x <> null -> x
-        | x when x = null -> invalidArg "task" "Could not recognize task type."
-        | _ -> invalidArg "arguments" "Could not recognize task type."
+    let logger = getLogger()
 
-    let target =
-        match (getTarget argv).SingleOrDefault() with
-        | "machine" -> EnvironmentVariableTarget.Machine
-        | "user" -> EnvironmentVariableTarget.User
-        | _ -> invalidArg "arguments" "Could not recognize target type."
+    logger.LogInformation "Started processing arguments..."
 
-    performOperation operation fileName target
+    let fileName = getFileName argv
+
+    logger.LogInformation("The file name: {fileName}", fileName)
+
+    let operation = getOperation argv
+
+    logger.LogInformation("The operation: {operation}", operation)
+
+    let target = getTarget argv
+
+    logger.LogInformation("Target: {target}", target)
+
+    logger.LogInformation("Processing environment variables...")
+
+    handle operation fileName target
+
+    logger.LogInformation("Environment variables have been processed.")
 
     0
