@@ -1,5 +1,4 @@
-# Seneca.EnvironmentVariables.ExIm
-[![Build Status](https://dev.azure.com/eminencegrs/ExIm/_apis/build/status/Seneca.EnvironmentVariables.ExIm?branchName=develop)](https://dev.azure.com/eminencegrs/ExIm/_build/latest?definitionId=8&branchName=develop)
+# Seneca.Imex
 
 ## Introduction
 
@@ -13,4 +12,4 @@
 | --target           |                                         | machine; user        |
 
 ### Example:
-ExIm.exe --task=export --target=user --filename=C:\exported_variables.json
+Seneca.Imex.exe --task=export --target=user --filename=C:\exported_variables.json
