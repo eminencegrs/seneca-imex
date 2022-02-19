@@ -1,11 +1,11 @@
-﻿module Handler
+﻿module Seneca.Imex.ImportExportHandler
 
 open System
 open System.Collections
 open System.IO
 open System.Runtime.Serialization.Json
-open Extensions
-open Operation
+open Seneca.Imex.Extensions
+open Seneca.Imex.Operation
 
 let export (fileName : string) (target : EnvironmentVariableTarget) =
     try
@@ -25,7 +25,7 @@ let import (fileName : string) (target : EnvironmentVariableTarget) =
     with
         | ex -> invalidOp $"Could not import environment variables. Inner error: {ex.Message}"
 
-let handle (operation : OperationName) (fileName : string) (target : EnvironmentVariableTarget) =
+let handle (operation : Operation) (fileName : string) (target : EnvironmentVariableTarget) =
     match operation with
-    | OperationName.Export -> export fileName target
-    | OperationName.Import -> import fileName target
+    | Operation.Export -> export fileName target
+    | Operation.Import -> import fileName target

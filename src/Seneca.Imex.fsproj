@@ -14,12 +14,12 @@
 
   <ItemGroup>
     <Compile Include="Operation.fs" />
-    <Compile Include="Argument.fs" />
+    <Compile Include="Parameter.fs" />
     <Compile Include="Regex.fs" />
-    <Compile Include="ArgumentsProcessing.fs" />
+    <Compile Include="ParametersHandler.fs" />
     <Compile Include="Extensions.fs" />
     <Compile Include="Logging.fs" />
-    <Compile Include="Handler.fs" />
+    <Compile Include="ImportExportHandler.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

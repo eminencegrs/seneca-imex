@@ -1,4 +1,4 @@
-module Logging
+module Seneca.Imex.Logging
 
 open Microsoft.Extensions.Logging
 

@@ -1,10 +1,10 @@
-﻿module Operation
+﻿module Seneca.Imex.Operation
 
-type OperationName =
+type Operation =
     | Export
     | Import
 
-let getOperationValue (operationName : OperationName) =
-    match operationName with
-    | OperationName.Export -> "export"
-    | OperationName.Import -> "import"
+let getOperation (operation : Operation) =
+    match operation with
+    | Operation.Export -> "export"
+    | Operation.Import -> "import"

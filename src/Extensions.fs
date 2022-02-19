@@ -1,4 +1,4 @@
-﻿module Extensions
+﻿module Seneca.Imex.Extensions
 
 open System
 open System.Collections
@@ -6,4 +6,4 @@ open System.Collections
 let objectToHashtable (obj : Object) =
    match obj with
    | :? Hashtable as hashtable -> hashtable
-   | _ -> invalidOp "Could not cast the object read from the file to Hashtable"
+   | _ -> invalidOp "Could not cast the object (read from the file) to Hashtable"

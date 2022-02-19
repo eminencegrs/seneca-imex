@@ -1,7 +1,7 @@
 ﻿open Microsoft.Extensions.Logging
-open ArgumentsProcessing
-open Logging
-open Handler
+open Seneca.Imex.Logging
+open Seneca.Imex.ImportExportHandler
+open Seneca.Imex.ParametersHandler
 
 [<EntryPoint>]
 let main argv =
