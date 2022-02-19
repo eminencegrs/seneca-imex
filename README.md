@@ -1,4 +1,5 @@
 # Seneca.Imex
+[![Build](https://github.com/eminencegrs/seneca-imex/actions/workflows/dotnet.yml/badge.svg?branch=develop)](https://github.com/eminencegrs/seneca-imex/actions/workflows/dotnet.yml)
 
 ## Introduction
 
