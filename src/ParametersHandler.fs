@@ -9,7 +9,7 @@ open Regex
 module ParametersHandler =
 
     let getFileName (parameters : string[]) : string =
-        let parameter = Seq.tryFind (fun arg -> getRegexForFileName().IsMatch(arg)) parameters
+        let parameter = Seq.tryFind (fun (arg: string) -> getRegexForFileName().IsMatch(arg)) parameters
         match parameter with
         | x when x.IsSome ->
              getRegexForFileName()
@@ -19,7 +19,7 @@ module ParametersHandler =
         | _ -> invalidArg "--filename" "The '--filename' parameter must not be null or empty"
 
     let getOperation (parameters : string[]) : OperationType =
-        let parameter = Seq.tryFind (fun arg -> getRegexForTask().IsMatch(arg)) parameters
+        let parameter = Seq.tryFind (fun (arg: string) -> getRegexForTask().IsMatch(arg)) parameters
         match parameter with
         | x when x.IsSome ->
             let task =
@@ -34,7 +34,7 @@ module ParametersHandler =
         | _ -> invalidArg "--task" "The '--task' parameter must not be null or empty"
 
     let getTarget (parameters : string[]) : EnvironmentVariableTarget =
-        let parameter = Seq.tryFind (fun arg -> getRegexForTarget().IsMatch(arg)) parameters
+        let parameter = Seq.tryFind (fun (arg: string) -> getRegexForTarget().IsMatch(arg)) parameters
         match parameter with
         | x when x.IsSome ->
             let target =
