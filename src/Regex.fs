@@ -1,20 +1,28 @@
-﻿module Seneca.Imex.Regex
+﻿namespace Seneca.Imex
 
 open System.Text.RegularExpressions
-open Seneca.Imex.Parameter
-open Seneca.Imex.Operation
+open Operations
+open Parameters
 
-let getRegexOptions () = RegexOptions.Compiled ||| RegexOptions.IgnoreCase ||| RegexOptions.CultureInvariant;
+module Regex =
 
-let getTaskPattern () =
-    $"(--{(getParameter Parameter.Task)}=(?<{(getParameter Parameter.Task)}>({(getOperation Operation.Export)})|({(getOperation Operation.Import)})))"
+    let getRegexOptions () =
+        RegexOptions.Compiled ||| RegexOptions.IgnoreCase ||| RegexOptions.CultureInvariant;
 
-let getRegexForTask () = new Regex(getTaskPattern(), getRegexOptions())
+    let getTaskPattern () =
+        $"(--{(getParameter ParameterType.Task)}=(?<{(getParameter ParameterType.Task)}>({(getOperation OperationType.Export)})|({(getOperation OperationType.Import)})))"
 
-let getTargetPattern () = $"(--{(getParameter Parameter.Target)}=(?<{(getParameter Parameter.Target)}>.+))"
+    let getRegexForTask () =
+        new Regex(getTaskPattern(), getRegexOptions())
 
-let getRegexForTarget () = new Regex(getTargetPattern(), getRegexOptions())
+    let getTargetPattern () =
+        $"(--{(getParameter ParameterType.Target)}=(?<{(getParameter ParameterType.Target)}>.+))"
 
-let getFileNamePattern () = $"(--{(getParameter Parameter.FileName)}=(?<{(getParameter Parameter.FileName)}>.+))"
+    let getRegexForTarget () =
+        new Regex(getTargetPattern(), getRegexOptions())
 
-let getRegexForFileName () = new Regex(getFileNamePattern(), getRegexOptions())
+    let getFileNamePattern () =
+        $"(--{(getParameter ParameterType.FileName)}=(?<{(getParameter ParameterType.FileName)}>.+))"
+
+    let getRegexForFileName () =
+        new Regex(getFileNamePattern(), getRegexOptions())
